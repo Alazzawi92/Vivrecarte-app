@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Maîtrise JavaScript Moderne (ESM) pour Express.js – 40 Exercices</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 30px;
+    max-width: 1200px;
+    margin: auto;
+    line-height: 1.6;
+    color: #2c3e50;
+}
+h1 {
+    text-align: center;
+    border-bottom: 4px solid #2c3e50;
+    padding-bottom: 15px;
+    margin-bottom: 40px;
+}
+.section {
+    margin-top: 60px;
+}
+.section-title {
+    background: #2c3e50;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border-top: 6px solid #3498db;
+}
+.badge {
+    display: inline-block;
+    background: #3498db;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #1a5276;
+}
+.objective {
+    font-weight: 600;
+    color: #117a65;
+    font-size: 0.9em;
+}
+.statement {
+    margin: 10px 0;
+}
+.code-box {
+    background: #2d3436;
+    color: #fab1a0;
+    padding: 14px;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 0.9em;
+    margin: 10px 0;
+    white-space: pre-wrap;
+}
+.analysis {
+    border-left: 4px solid #d5dbdb;
+    padding-left: 12px;
+    font-size: 0.9em;
+    color: #555;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Maîtrise JavaScript Moderne (ESM) appliqué à Express.js</h1>
+
+<!-- ================= PHASE 1 ================= -->
+
+<div class="section">
+<div class="section-title">Phase 1 — Modules ESM & Syntaxe Moderne (1–10)</div>
+<div class="grid">
+
+<!-- 1 -->
+<div class="card">
+<span class="badge">01</span>
+<h3>Export Nommé</h3>
+<div class="objective">Structurer un module utilitaire réutilisable.</div>
+<div class="statement">Créer un fichier <code>math.js</code> exportant une fonction <code>add(a, b)</code>.</div>
+<div class="code-box">export const add = (a, b) => a + b;</div>
+<div class="analysis">Permet d’exporter plusieurs fonctions indépendantes et d’importer uniquement celles nécessaires.</div>
+</div>
+
+<!-- 2 -->
+<div class="card">
+<span class="badge">02</span>
+<h3>Export par Défaut</h3>
+<div class="objective">Définir l’entité principale d’un module.</div>
+<div class="statement">Exporter une classe <code>Database</code> en export par défaut.</div>
+<div class="code-box">export default class Database { connect(){} }</div>
+<div class="analysis">Un seul export par défaut par fichier, idéal pour services ou classes métier.</div>
+</div>
+
+<!-- 3 -->
+<div class="card">
+<span class="badge">03</span>
+<h3>Alias d’Import</h3>
+<div class="objective">Éviter les conflits de noms.</div>
+<div class="statement">Importer <code>log</code> sous le nom <code>logger</code>.</div>
+<div class="code-box">import { log as logger } from './utils.js';</div>
+<div class="analysis">Le mot-clé <code>as</code> permet le renommage stratégique.</div>
+</div>
+
+<!-- 4 -->
+<div class="card">
+<span class="badge">04</span>
+<h3>Template Literals</h3>
+<div class="objective">Construire dynamiquement des chaînes.</div>
+<div class="statement">Créer une URL dynamique avec <code>id</code> et <code>slug</code>.</div>
+<div class="code-box">const url = `/post/${id}/${slug}`;</div>
+<div class="analysis">Améliore la lisibilité comparé à la concaténation.</div>
+</div>
+
+<!-- 5 -->
+<div class="card">
+<span class="badge">05</span>
+<h3>Destructuration Objet</h3>
+<div class="objective">Extraire proprement des données.</div>
+<div class="statement">Extraire <code>email</code> depuis <code>req.body</code>.</div>
+<div class="code-box">const { email } = req.body;</div>
+<div class="analysis">Réduit la répétition et améliore la clarté.</div>
+</div>
+
+<!-- 6 -->
+<div class="card">
+<span class="badge">06</span>
+<h3>Destructuration Tableau</h3>
+<div class="objective">Manipuler des collections efficacement.</div>
+<div class="statement">Extraire les deux premiers éléments d’un tableau.</div>
+<div class="code-box">const [first, second] = tags;</div>
+<div class="analysis">Accès direct par position.</div>
+</div>
+
+<!-- 7 -->
+<div class="card">
+<span class="badge">07</span>
+<h3>Spread Operator</h3>
+<div class="objective">Appliquer l’immuabilité.</div>
+<div class="statement">Cloner un objet utilisateur et modifier son rôle.</div>
+<div class="code-box">const updated = { ...user, role: 'admin' };</div>
+<div class="analysis">Évite la mutation directe des objets.</div>
+</div>
+
+<!-- 8 -->
+<div class="card">
+<span class="badge">08</span>
+<h3>Rest Parameters</h3>
+<div class="objective">Accepter un nombre variable d’arguments.</div>
+<div class="statement">Créer une fonction de somme dynamique.</div>
+<div class="code-box">const sumAll = (...nums) => nums.reduce((a,b)=>a+b,0);</div>
+<div class="analysis">Regroupe les arguments dans un tableau.</div>
+</div>
+
+<!-- 9 -->
+<div class="card">
+<span class="badge">09</span>
+<h3>Short-Circuit</h3>
+<div class="objective">Définir une valeur par défaut.</div>
+<div class="statement">Assigner une valeur fallback si nom vide.</div>
+<div class="code-box">const name = user.name || 'Anonyme';</div>
+<div class="analysis">Utilise l’opérateur logique OR.</div>
+</div>
+
+<!-- 10 -->
+<div class="card">
+<span class="badge">10</span>
+<h3>Optional Chaining</h3>
+<div class="objective">Sécuriser l’accès aux propriétés.</div>
+<div class="statement">Accéder à <code>user.address.city</code> sans erreur.</div>
+<div class="code-box">const city = user?.address?.city;</div>
+<div class="analysis">Retourne <code>undefined</code> si propriété absente.</div>
+</div>
+
+</div>
+</div>
+
+<!-- ================= PHASE 2 ================= -->
+
+<div class="section">
+<div class="section-title">Phase 2 — Manipulation de Données JSON (11–20)</div>
+<div class="grid">
+
+<div class="card"><span class="badge">11</span><h3>Filter</h3>
+<div class="objective">Filtrer un dataset.</div>
+<div class="statement">Sélectionner les produits dont le prix est supérieur à 50.</div>
+<div class="code-box">const result = items.filter(p => p.price > 50);</div>
+<div class="analysis">Retourne un nouveau tableau filtré.</div></div>
+
+<div class="card"><span class="badge">12</span><h3>Map</h3>
+<div class="objective">Transformer un dataset.</div>
+<div class="statement">Extraire les IDs d’un tableau d’objets.</div>
+<div class="code-box">const ids = users.map(u => u.id);</div>
+<div class="analysis">Produit un nouveau tableau transformé.</div></div>
+
+<div class="card"><span class="badge">13</span><h3>Find</h3>
+<div class="objective">Rechercher un élément unique.</div>
+<div class="statement">Trouver l’utilisateur correspondant à un email cible.</div>
+<div class="code-box">const user = users.find(u => u.email === target);</div>
+<div class="analysis">Retourne le premier élément correspondant.</div></div>
+
+<div class="card"><span class="badge">14</span><h3>Some</h3>
+<div class="objective">Tester une condition partielle.</div>
+<div class="statement">Vérifier si un utilisateur possède le rôle admin.</div>
+<div class="code-box">const hasAdmin = users.some(u => u.isAdmin);</div>
+<div class="analysis">Retourne un booléen.</div></div>
+
+<div class="card"><span class="badge">15</span><h3>Every</h3>
+<div class="objective">Valider une condition globale.</div>
+<div class="statement">Vérifier que tous les produits sont en stock.</div>
+<div class="code-box">const valid = items.every(i => i.qty > 0);</div>
+<div class="analysis">Retourne true si tous satisfont la condition.</div></div>
+
+<div class="card"><span class="badge">16</span><h3>Sort</h3>
+<div class="objective">Ordonner un dataset.</div>
+<div class="statement">Trier les utilisateurs par ordre alphabétique.</div>
+<div class="code-box">users.sort((a,b)=>a.name.localeCompare(b.name));</div>
+<div class="analysis">Tri mutatif du tableau.</div></div>
+
+<div class="card"><span class="badge">17</span><h3>Reduce</h3>
+<div class="objective">Agréger des valeurs.</div>
+<div class="statement">Calculer le total d’un panier.</div>
+<div class="code-box">const total = cart.reduce((acc,c)=>acc+c.price,0);</div>
+<div class="analysis">Accumule une valeur unique.</div></div>
+
+<div class="card"><span class="badge">18</span><h3>Object.keys</h3>
+<div class="objective">Lister les propriétés d’un objet.</div>
+<div class="statement">Récupérer les paramètres de requête.</div>
+<div class="code-box">Object.keys(req.query);</div>
+<div class="analysis">Retourne un tableau des clés.</div></div>
+
+<div class="card"><span class="badge">19</span><h3>Object.entries</h3>
+<div class="objective">Parcourir clé/valeur.</div>
+<div class="statement">Transformer un objet config en tableau itérable.</div>
+<div class="code-box">Object.entries(config);</div>
+<div class="analysis">Permet une boucle dynamique.</div></div>
+
+<div class="card"><span class="badge">20</span><h3>JSON Parse/Stringify</h3>
+<div class="objective">Manipuler le format JSON.</div>
+<div class="statement">Parser une chaîne JSON reçue.</div>
+<div class="code-box">const data = JSON.parse(jsonString);</div>
+<div class="analysis">Standard d’échange des API.</div></div>
+
+</div>
+</div>
+
+<!-- ================= PHASE 3 ================= -->
+
+<div class="section">
+<div class="section-title">Phase 3 — Asynchronisme & Promesses (21–30)</div>
+<div class="grid">
+
+<div class="card"><span class="badge">21</span><h3>Créer une Promise</h3>
+<div class="statement">Simuler un délai asynchrone.</div>
+<div class="code-box">const wait = ms => new Promise(r => setTimeout(r, ms));</div></div>
+
+<div class="card"><span class="badge">22</span><h3>.then()</h3>
+<div class="statement">Consommer une promise.</div>
+<div class="code-box">fetchData().then(res => console.log(res));</div></div>
+
+<div class="card"><span class="badge">23</span><h3>Async/Await</h3>
+<div class="statement">Réécrire avec await.</div>
+<div class="code-box">const res = await fetchData();</div></div>
+
+<div class="card"><span class="badge">24</span><h3>Try/Catch</h3>
+<div class="statement">Gérer une erreur asynchrone.</div>
+<div class="code-box">try { await fetch(); } catch(e) {}</div></div>
+
+<div class="card"><span class="badge">25</span><h3>Promise.all</h3>
+<div class="statement">Exécuter plusieurs requêtes en parallèle.</div>
+<div class="code-box">await Promise.all([f1(), f2(), f3()]);</div></div>
+
+<div class="card"><span class="badge">26</span><h3>Promise.race</h3>
+<div class="statement">Implémenter un timeout.</div>
+<div class="code-box">Promise.race([fetch(), timeout(5000)]);</div></div>
+
+<div class="card"><span class="badge">27</span><h3>Top-Level Await</h3>
+<div class="statement">Utiliser await à la racine d’un module.</div>
+<div class="code-box">const conn = await db.connect();</div></div>
+
+<div class="card"><span class="badge">28</span><h3>Fetch GET</h3>
+<div class="statement">Récupérer des données externes.</div>
+<div class="code-box">const res = await fetch(url);</div></div>
+
+<div class="card"><span class="badge">29</span><h3>Fetch POST</h3>
+<div class="statement">Envoyer un JSON vers un serveur.</div>
+<div class="code-box">fetch(url,{method:'POST',body:JSON.stringify(data)});</div></div>
+
+<div class="card"><span class="badge">30</span><h3>Async Map</h3>
+<div class="statement">Transformer un tableau via appels asynchrones.</div>
+<div class="code-box">await Promise.all(ids.map(id => fetchById(id)));</div></div>
+
+</div>
+</div>
+
+<!-- ================= PHASE 4 ================= -->
+
+<div class="section">
+<div class="section-title">Phase 4 — Architecture Backend (31–40)</div>
+<div class="grid">
+
+<div class="card"><span class="badge">31</span><h3>Higher Order Function</h3>
+<div class="statement">Créer une fonction retournant une fonction.</div>
+<div class="code-box">const multiplyBy = x => y => x * y;</div></div>
+
+<div class="card"><span class="badge">32</span><h3>Middleware Pattern</h3>
+<div class="statement">Modifier l’objet req avant next().</div>
+<div class="code-box">const auth=(req,res,next)=>{req.user='Bob';next();};</div></div>
+
+<div class="card"><span class="badge">33</span><h3>Closure</h3>
+<div class="statement">Créer un compteur encapsulé.</div>
+<div class="code-box">const counter=(()=>{let c=0;return()=>c++;})();</div></div>
+
+<div class="card"><span class="badge">34</span><h3>Dynamic Import</h3>
+<div class="statement">Importer conditionnellement un module.</div>
+<div class="code-box">if(dev) await import('./debug.js');</div></div>
+
+<div class="card"><span class="badge">35</span><h3>Map</h3>
+<div class="statement">Stocker des sessions via Map.</div>
+<div class="code-box">sessions.set(id,data);</div></div>
+
+<div class="card"><span class="badge">36</span><h3>Set</h3>
+<div class="statement">Supprimer les doublons.</div>
+<div class="code-box">const unique=[...new Set(ids)];</div></div>
+
+<div class="card"><span class="badge">37</span><h3>Erreur Personnalisée</h3>
+<div class="statement">Créer une classe ApiError.</div>
+<div class="code-box">class ApiError extends Error { constructor(status,msg){super(msg);this.status=status;} }</div></div>
+
+<div class="card"><span class="badge">38</span><h3>Regex</h3>
+<div class="statement">Valider un slug.</div>
+<div class="code-box">/^[a-z0-9-]+$/.test(slug);</div></div>
+
+<div class="card"><span class="badge">39</span><h3>Variables d’Environnement</h3>
+<div class="statement">Accéder à PORT.</div>
+<div class="code-box">const PORT=process.env.PORT||3000;</div></div>
+
+<div class="card"><span class="badge">40</span><h3>Factory Function</h3>
+<div class="statement">Créer un générateur CRUD.</div>
+<div class="code-box">const createCtrl=Model=>({list:()=>Model.find()});</div></div>
+
+</div>
+</div>
+
+</body>
+</html>
