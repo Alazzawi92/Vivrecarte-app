@@ -8,7 +8,11 @@ import { errorHandle } from "./middlewares/error.middleware.js"
 
 const app = express()
 
-app.use(helmet())
+// Utilisation de helmet avec une configuration souple pour commencer
+app.use(helmet({
+  contentSecurityPolicy: false, // Désactive temporairement si ça bloque trop
+}));
+
 app.use(cors())
 app.use(express.json())
 
