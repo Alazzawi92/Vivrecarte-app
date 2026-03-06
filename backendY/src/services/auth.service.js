@@ -35,6 +35,9 @@ export const AuthService = {
     const user = await userRepository.findByEmail(email);
     if (!user || !user.password) throw new Error("L'utilsateur n'existe pas  ou le mot de passe ou sami ou je sais pas ");
 
+    console.log(email, user, user.password);
+    
+
     // password
     const valid = await argon2.verify(user.password, password);
     if (!valid) throw new Error("Invalid creadentials");
