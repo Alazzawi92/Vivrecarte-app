@@ -13,11 +13,8 @@ const app = express()
 app.use(helmet(
 {    contentSecurityPolicy: true} // j'active en production avec la config adapté 
 ))
-app.use(cors(
-  {  origin: env.CLIENT_URL || "*", 
-    credentials: true
-  }
-))
+app.use(cors())
+app.set("trust proxy", true)
 app.use(express.json())
 
 app.use(rateLimit({
