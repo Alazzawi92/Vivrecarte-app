@@ -3,11 +3,10 @@ import jwt from "jsonwebtoken";
 import crypto from "crypto";
 import { v4 as uuid4 } from "uuid";
 import { env } from "../config/env.js";
-import { userRepository } from "../repositories/user.repository.js";
+import { userRepository } from "../repositories/user.repository.js"; 
 import { MailService } from "./mail.service.js";
-
+ 
 export const AuthService = {
-
   // ================= INSCRIPTIOn ====================//
   async register(email, password) {
     const hashed = await argon2.hash(password);
@@ -27,16 +26,17 @@ export const AuthService = {
     return userid;
   },
 
-
   // ========= LOGIN  ==============//
 
   async login(email, password) {
     // email
     const user = await userRepository.findByEmail(email);
     console.log(email, user, user.password, env.JWT_SECRET);
-    if (!user || !user.password) throw new Error( env.JWT_SECRET,"L'utilsateur n'existe pas  ou le mot de passe ou sami ou je sais pas ");
-
-    
+    if (!user || !user.password)
+      throw new Error(
+        env.JWT_SECRET,
+        "L'utilsateur n'existe pas  ou le mot de passe ou sami ou je sais pas ",
+      );
 
     // password
     const valid = await argon2.verify(user.password, password);
@@ -53,16 +53,14 @@ export const AuthService = {
     );
   },
 
-  // vérifier l'utilisateur apres inscription 
+  // vérifier l'utilisateur apres inscription
 
   async verifyUser(token) {
- 
-
     const user = await userRepository.findByToken(token);
 
     if (!user) return null;
 
-await userRepository.updateVerification(user.id);
+    await userRepository.updateVerification(user.id);
 
     return user;
   },
