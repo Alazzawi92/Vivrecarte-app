@@ -28,10 +28,14 @@ const limiter = rateLimit({
   max: 50,
   standardHeaders: true,
   legacyHeaders: false,
-  validate: { trustProxy: false }, // Optionnel: désactive l'alerte si trust proxy est déjà configuré
+  // CETTE LIGNE EST LA SOLUTION :
+  validate: { 
+    trustProxy: false,
+    xForwardedForHeader: false,
+    forwardedHeader: false 
+  }, 
   message: { error: "Trop de requêtes, réessayez plus tard" }
 });
-
 // Appliquer le limiteur global
 app.use(limiter);
 
