@@ -36,7 +36,7 @@ app.use(rateLimit({
 // Limiter les tentatives sur les routes d'auth
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 50,
+  max: 100,
     keyGenerator: (req) => {
     return req.ip;
   },
@@ -46,6 +46,9 @@ const authLimiter = rateLimit({
 // ================== Routes ================== //
 app.use('/api/auth', authLimiter, authRoutes);
 app.use('/api/users', authLimiter, userRoutes);
+app.get("/ip", (req, res) => {
+  res.send(req.ip);
+});
 
 // Middleware global de gestion des erreurs
 app.use(errorHandle);
