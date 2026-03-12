@@ -34,14 +34,18 @@ app.use(rateLimit({
 }));
 
 // Limiter les tentatives sur les routes d'auth
-const authLimiter = rateLimit({
+app.set("trust proxy", 1);
+
+const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100,
-    keyGenerator: (req) => {
-    return req.ip;
-  },
-  message: { error: "Trop de tentatives, réessayez plus tard" }
+  max: 50,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Trop de requêtes, réessayez plus tard" }
 });
+
+app.use(limiter);
+
 
 // ================== Routes ================== //
 app.use('/api/auth', authLimiter, authRoutes);
