@@ -1,0 +1,37 @@
+opencollection: 1.0.0
+
+info:
+  name: vivreCard
+config:
+  proxy:
+    inherit: true
+    config:
+      protocol: http
+      hostname: ""
+      port: ""
+      auth:
+        username: ""
+        password: ""
+      bypassProxy: ""
+
+request:
+  auth:
+    type: bearer
+    token: ""
+  variables:
+    - name: baseURL
+      value: http://localhost:3000/api
+    - name: baseDeployedURL
+      value: vivre-card-3.vercel.app/
+  scripts:
+    - type: after-response
+      code: |-
+        const token = res.getBody().token
+
+        bru.setVar("token", token)
+bundled: false
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git
