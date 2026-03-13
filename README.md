@@ -128,3 +128,28 @@ npm install zod
 npm install @hookform/resolvers
 
 //==========================================//
+
+
+## API ###
+
+//==========================================//
+npm install axios
+ou 
+yarn add axios
+//==========================================//
+
+
+
+
+### State management ### (equivalent UseContext || redux)
+
+//==========================================//
+
+npm install zustand
+
+ou
+
+yarn add zustand
+
+//==========================================//
+

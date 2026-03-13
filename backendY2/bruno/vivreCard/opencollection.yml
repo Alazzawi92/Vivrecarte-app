@@ -17,6 +17,10 @@ config:
 request:
   auth:
     type: bearer
+    token: ""
+  variables:
+    - name: baseURL
+      value: http://localhost:3000/api
   scripts:
     - type: after-response
       code: |-

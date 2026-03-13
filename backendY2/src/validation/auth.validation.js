@@ -3,7 +3,7 @@ import { z } from "zod";
 // Validation pour l'inscription avec confirm password
 export const registrationSchema = z
   .object({
-    email: z.string().email("Email invalide"), // format email obligatoire
+    email: z.email("Email invalide"), // format email obligatoire
     password: z.string()
       .min(8, "Mot de passe minimum 8 caractères")
       .regex(/[A-Z]/, "Au moins une majuscule")
