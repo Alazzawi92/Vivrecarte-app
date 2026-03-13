@@ -65,3 +65,66 @@ CREATE TABLE users (
 
 
 https://wazabi64000.github.io/vivreCard/
+
+
+
+
+
+
+vivre-card-app
+│
+├── app
+│   ├── index.js
+│   ├── login.js
+│   ├── register.js
+│   ├── map.js
+│   ├── profile.js
+│   └── logout.js
+│
+├── components
+│   ├── Button.js
+│   ├── InputField.js
+│   └── Loading.js
+│
+├── services
+│   ├── api.js
+│   ├── authService.js
+│   └── userService.js
+│
+├── store
+│   └── authStore.js
+│
+├── utils
+│   └── validation.js
+
+
+## navigation ## 
+
+//==========================================//
+npm install @react-navigation/native
+npm install @react-navigation/native-stack
+npm install @react-navigation/bottom-tabs
+
+
+//========================================//
+
+
+
+## le projet ##
+//==========================================//
+
+npx expo install react-native-screens react-native-safe-area-context
+
+//==========================================//
+
+
+## Les formulation 
+
+
+//==========================================//
+
+npm install react-hook-form
+npm install zod
+npm install @hookform/resolvers
+
+//==========================================//

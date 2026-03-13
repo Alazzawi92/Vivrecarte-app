@@ -5,17 +5,22 @@ info:
 
 http:
   method: POST
-  url: "{{baseURL}}/auth/login"
+  url: "{{DepolyedURL}}/auth/login"
   body:
     type: json
     data: |-
       {
-        "email": "tobak66551@cslua.com",
+        "email": "hilori8050@3dkai.com",
         "password" :"Azerty123"
       }
   auth:
     type: bearer
     token: ""
+
+runtime:
+  variables:
+    - name: DepolyedURL
+      value: https://vivre-card.vercel.app/api
 
 settings:
   encodeUrl: true

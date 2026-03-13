@@ -5,17 +5,25 @@ info:
 
 http:
   method: POST
-  url: "{{baseURL}}/auth/register"
+  url: "{{DepolyedURL}}/auth/register"
   body:
     type: json
     data: |-
       {
-        "email": "tobak66551@cslua.com",
-        "password" :"Azerty123"
+        "email": "hilori8050@3dkai.com",
+        "password" :"Azerty123",
+         "confirmPassword" :"Azerty123"
       }
   auth:
     type: bearer
     token: ""
+
+runtime:
+  variables:
+    - name: baseURL
+      value: http://localhost:3000/api
+    - name: DepolyedURL
+      value: https://vivre-card.vercel.app/api
 
 settings:
   encodeUrl: true

@@ -14,6 +14,11 @@ const requiredVars = [
   "DB_NAME",
   "JWT_SECRET",
   "CLIENT_URL",
+  "BREVO_SMTP_HOST",
+  "BREVO_SMTP_USER",
+  "BREVO_SMTP_PASS",
+  "BREVO_SMTP_SENDER",
+
 ];
 
 requiredVars.forEach((key) => {
@@ -34,7 +39,7 @@ export const env = {
 
   JWT_SECRET: process.env.JWT_SECRET,
 
-  SMTP_HOST:
+  SMTP_HOST: 
     provider === "resend"
       ? process.env.SMTP_HOST
       : process.env.BREVO_SMTP_HOST,

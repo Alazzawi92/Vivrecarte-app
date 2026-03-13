@@ -5,17 +5,22 @@ info:
 
 http:
   method: GET
-  url: "{{baseURL}}/auth/verify/a3c45652-a130-46c2-ac6a-f450b2da9335"
+  url: https://jfcihib.r.af.d.sendibt2.com/tr/cl/HSb3gty9dYHlfvr9Qvz5QlsdFuRuOVo_nQedI3O_3uBdjx0N24v6DxG2h9bbDB1unsmmpCw6dWJ2-Gl5C7ka-gwDznuHfi1c-r7C6-ZEj4WLTXMnggcPa4oZZnOlQMNWPPF5N6y12UN_6QR6D1g8J0c9THcssR_krbgrHQfA3y4nGlWCXWZSgaGSYxbWrMrUvfJjvaUngVjtKJILPZ_i_6TWGLIXFpY-g2N4edNdQoV7BBhVmZ_MYxzTEvjOdhL7KJufwX7H2k0LwXTGSpnArZmHPSmyHBw1JwsdoAFzdpJYOel93qfInI5yHo4xATAB9MgdZiYgRJWKIwIi9TE0WtaJGHrnhuMsZYWq4Q
   body:
     type: json
     data: |-
       {
-        "email": "tobak66551@cslua.com",
+        "email": "hilori8050@3dkai.com",
         "password" :"Azerty123"
       }
   auth:
     type: bearer
     token: ""
+
+runtime:
+  variables:
+    - name: baseURL
+      value: http://localhost:3000/api
 
 settings:
   encodeUrl: true
