@@ -104,7 +104,7 @@ vivre-card-app
 npm install @react-navigation/native
 npm install @react-navigation/native-stack
 npm install @react-navigation/bottom-tabs
-
+//==========================================//
 
 //========================================//
 
@@ -153,3 +153,38 @@ yarn add zustand
 
 //==========================================//
 
+
+### Sécutité  / storage ###
+
+//==========================================//
+
+npx expo install expo-secure-store
+
+//==========================================//
+
+
+### Localisation ###
+
+//==========================================//
+
+npx expo install expo-location
+
+//==========================================//
+
+
+
+### Map ###
+
+//==========================================//
+
+npx expo install react-native-maps
+
+//==========================================//
+
+
+
+### Démarer le prejt #### 
+
+//==========================================//
+npm start / npx expo start 
+//==========================================//

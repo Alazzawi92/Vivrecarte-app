@@ -1,0 +1,26 @@
+info:
+  name: update
+  type: http
+  seq: 2
+
+http:
+  method: PUT
+  url: "{{baseDeployedURL}}/users/location"
+  body:
+    type: json
+    data: |-
+      {
+        "latitude" : 39.9496103,
+        "longitude" : 39.9496103
+        
+        
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
