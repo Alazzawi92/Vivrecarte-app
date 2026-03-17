@@ -50,5 +50,9 @@ app.get('/', (req, res) => {
 
 // Démarrage du serveur
 app.listen(PORT, () => {
-  console.log(`Serveur tournant sur localhost:${PORT}`);
+  const baseUrl = `http://localhost:${PORT}`;
+  console.log(`Serveur démarré sur ${baseUrl}`);
+  console.log(`Test: ${baseUrl}/`);
+  console.log(`Auth API: ${baseUrl}/api/auth`);
+  console.log(`Users API: ${baseUrl}/api/users`);
 });

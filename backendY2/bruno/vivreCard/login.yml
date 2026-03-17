@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseDeployedURL}}/auth/login"
+  url: "{{baseURL}}/auth/login"
   body:
     type: json
     data: |-

@@ -1,6 +1,8 @@
 name: local
 variables:
   - name: baseURL
-    value: http://localhost:3000/api
-  - name: DepolyedURL
+    value: http://localhost:5000/api
+  - name: verifyToken
+    value: ""
+  - name: baseDeployedURL
     value: https://vivre-card-3.vercel.app/api

@@ -140,3 +140,7 @@ vite.config.ts.timestamp-*
 
 
 backedY2/bruno
+
+echo .env>>.gitignore
+echo backendY2/.env>>.gitignore
+git rm --cached backendY2/.env
