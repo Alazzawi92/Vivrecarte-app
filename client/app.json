@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "VivreCarte",
+    "slug": "vivrecarte-client",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "plugins": [
+      "expo-secure-store"
+    ]
+  }
+}
