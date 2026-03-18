@@ -28,7 +28,11 @@ export default function Register({ navigation }) {
 
   const onSubmit = async (data) => {
     try {
-      const payload = { email: data.email, password: data.password };
+      const payload = {
+        email: data.email,
+        password: data.password,
+        confirmPassword: data.confirmPassword,
+      };
       await authService.register(payload);
       Alert.alert("Succès", "Compte créé");
       reset();

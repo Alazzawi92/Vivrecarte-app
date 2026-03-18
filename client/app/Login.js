@@ -30,7 +30,6 @@ const Login = ({ navigation }) => {
       const token = await authService.login(data);
       await setToken(token, data);
       Alert.alert("Succès", "Connexion réussie");
-      navigation.navigate("Profile");
     } catch (error) {
       console.log(error.response?.data || error);
       Alert.alert("Erreur", "Connexion impossible");

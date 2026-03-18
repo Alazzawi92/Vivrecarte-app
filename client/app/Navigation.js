@@ -14,7 +14,7 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName={isAuthenticated ? "Map" : "Register"}
+        initialRouteName={isAuthenticated ? "Profile" : "Register"}
         screenOptions={{ headerShown: false }}
       >
         {isAuthenticated ? (
